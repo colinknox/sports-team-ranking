@@ -11,6 +11,14 @@ class Team:
 
     def __eq__(self, other):
         return self.division_index == other.division_index and self.conference_index == other.conference_index
+    
+    def __gt__(self, other):
+        if self.division_index > other.division_index:
+            return True
+        elif self.division_index == other.division_index:
+            return self.conference_index > other.conference_index
+        else:
+            return False
 
 
 
@@ -19,6 +27,7 @@ cowboys = Team("Cowboys", "NFC", "East")
 dolphins = Team("Dolphins", "AFC", "East")  
 broncos = Team("Broncos", "AFC", "West")  
 
-print(f"DEBUG: Patriots same as Dolphins = {patriots == dolphins}")
-print(f"DEBUG: Patriots same as Cowboys = {patriots == cowboys}")
-print(f"DEBUG: Patriots same as Broncos = {patriots == broncos}")
+print(f"DEBUG: Patriots greater than Dolphins = {patriots > dolphins}")
+print(f"DEBUG: Broncos greater than Patriots = {broncos > patriots}")
+print(f"DEBUG: Cowboys greater than Patriots = {cowboys > patriots}")
+print(f"DEBUG: Patriots greater than Cowboys = {patriots > cowboys}")
